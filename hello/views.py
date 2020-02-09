@@ -3,5 +3,18 @@ from django.http import HttpResponse
 
 
 def index(request):
-    msg = request.GET['msg']
-    return HttpResponse('you typed: ' + msg + '.')
+    params = {
+        'title': 'Hello./index',
+        'msg': 'サンプルページっす',
+        'goto': 'next'
+    }
+    return render(request, 'hello/index.html', params)
+
+
+def next(request):
+    params = {
+        'title': 'Hello./next',
+        'msg': 'nextページっす',
+        'goto': 'index'
+    }
+    return render(request, 'hello/index.html', params)
